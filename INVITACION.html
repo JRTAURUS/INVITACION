@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fiesta Temática de Playboy</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@300&family=Rubik+Mono+One&display=swap">
+    <style>
+        body {
+            font-family: 'Oswald', sans-serif;
+            font-weight: 300; /* Peso de la fuente Oswald */
+            background-image: url('https://www.infobae.com/new-resizer/JnRUCOql8rCt7_iddig9AUlolYY=/992x661/filters:format(webp):quality(85)/cloudfront-us-east-1.images.arcpublishing.com/infobae/VJDALNMC3ZH7LE7EDIAU3RR2LY.jpg');
+            background-size: cover;
+            background-position: center;
+            color: #fff;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 800px;
+            padding: 30px;
+            background-color: rgba(0, 0, 0, 0.8); /* Fondo semitransparente */
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(255, 255, 0, 0.8); /* Amarillo Neon Shadow */
+            text-align: center; /* Alineación central del texto */
+            line-height: 1.6;
+            margin: auto; /* Centra el contenedor */
+        }
+        h1 {
+            font-family: 'Rubik Mono One', sans-serif;
+            color: #ff0; /* Amarillo Neon */
+            font-size: 3em; /* Tamaño aumentado */
+            font-weight: normal; /* Peso de la fuente Rubik Mono One */
+            margin-bottom: 15px;
+        }
+        p {
+            margin-bottom: 15px;
+            font-size: 1.5em; /* Tamaño aumentado */
+        }
+        .cta-button {
+            display: inline-block;
+            padding: 15px 30px;
+            font-size: 22px; /* Tamaño aumentado */
+            text-decoration: none;
+            background-color: #ff0; /* Amarillo Neon */
+            color: #000; /* Texto negro para mayor contraste */
+            border-radius: 8px;
+            border: 3px solid #ff0; /* Amarillo Neon Border */
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .cta-button:hover {
+            background-color: #ffcc00; /* Amarillo Neon Hover */
+        }
+        #nombreInput {
+            margin-top: 15px;
+            padding: 15px;
+            width: 100%;
+            box-sizing: border-box;
+            font-size: 1.5em; /* Tamaño aumentado */
+        }
+        #confirmados {
+            margin-top: 30px;
+            text-align: center; /* Alineación central del texto */
+        }
+        #listaConfirmados {
+            list-style-type: none;
+            padding: 0;
+        }
+        #listaConfirmados li {
+            margin-bottom: 10px;
+            font-size: 1.5em; /* Tamaño aumentado */
+        }
+        #imagenContainer {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        #imagenContainer img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="imagenContainer">
+            <!-- Inserta la imagen de internet aquí -->
+            <img src="https://www.infobae.com/new-resizer/i8yXSU4dLOpHy8kOsRXypGUk3TY=/992x558/filters:format(webp):quality(85)/s3.amazonaws.com/arc-wordpress-client-uploads/infobae-wp/wp-content/uploads/2018/03/28113340/logo-playboy-1920.jpg" alt="Logo Playboy">
+        </div>
+        <h1>Fiesta Sport de Playboy</h1>
+        <p><strong>Dirección:</strong> <a href="https://tu-link.com">Calle San Juan de Dios 297</a></p>
+        <p><strong>Fecha:</strong> 13/01/2024</p>
+        <p><strong>Hora:</strong> 7pm</p>
+        <p><strong>Tematica:</strong> Playboy</p>
+        <p><strong>DressCode:</strong> Sport</p>
+        <p>Te invitamos a la fiesta temática Sport de Playboy. Una noche llena de diversión y buen rollo.</p>
+        <p>Ponte tu atuendo deportivo más increíble y únete a nosotros para una experiencia relajada y llena de energía.</p>
+        <p>¡Esperamos verte ahí!</p>
+        <button onclick="confirmarAsistencia()" class="cta-button">Confirmar Asistencia</button>
+        <input type="text" id="nombreInput" placeholder="Ingresa tu nombre">
+        <div id="confirmados">
+            <h3>Confirmados:</h3>
+            <ul id="listaConfirmados"></ul>
+        </div>
+    </div>
+
+    <script>
+        var confirmados = [];
+        var nombreInput = document.getElementById('nombreInput');
+
+        function confirmarAsistencia() {
+            var nombre = nombreInput.value.trim();
+
+            if (nombre !== '') {
+                if (!confirmados.includes(nombre)) {
+                    confirmados.push(nombre);
+                    actualizarListaConfirmados();
+                    alert("¡Gracias por confirmar tu asistencia, " + nombre + "!");
+                    // Deshabilitar el campo de entrada después de confirmar la asistencia.
+                    nombreInput.disabled = true;
+                } else {
+                    alert("Ya has confirmado tu asistencia previamente.");
+                }
+            } else {
+                alert("Por favor, ingresa tu nombre antes de confirmar la asistencia.");
+            }
+        }
+
+        function actualizarListaConfirmados() {
+            var listaConfirmados = document.getElementById('listaConfirmados');
+            listaConfirmados.innerHTML = '';
+
+            for (var i = 0; i < confirmados.length; i++) {
+                var listItem = document.createElement('li');
+                listItem.textContent = confirmados[i];
+                listaConfirmados.appendChild(listItem);
+            }
+        }
+    </script>
+</body>
+</html>
